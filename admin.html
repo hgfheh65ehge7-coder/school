@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة المشرف — إدارة منصة كتبي</title>
+  <meta name="description" content="لوحة تحكم المشرف لإدارة الكتب والمناهج وملفات الـ PDF لمنصة كتبي العراق">
+  <meta name="theme-color" content="#163e2c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+  <!-- Lock Screen for Authentication -->
+  <div class="admin-lock-screen" id="admin-lock-screen">
+    <div class="admin-lock-card">
+      <div class="admin-lock-icon">🔐</div>
+      <h1 class="admin-lock-title">لوحة تحكم المشرف</h1>
+      <p class="admin-lock-desc">
+        يرجى إدخال رمز المرور السري للوصول إلى لوحة التحكم وإدارة الكتب والمناهج.
+      </p>
+      <form class="admin-lock-form" onsubmit="handleAdminLogin(event)">
+        <input type="password" 
+               id="admin-passcode" 
+               class="admin-lock-input" 
+               placeholder="رمز المرور (الافتراضي 1234)" 
+               autocomplete="current-password"
+               required 
+               autofocus>
+        <button type="submit" class="admin-lock-btn">
+          تسجيل الدخول إلى اللوحة 🔓
+        </button>
+      </form>
+      <div class="admin-lock-hint">رمز المشرف الافتراضي: <strong>1234</strong> (يمكنك تغييره من الإعدادات)</div>
+      <a href="index.html" class="admin-lock-back">← العودة إلى واجهة الطلاب</a>
+    </div>
+  </div>
+
+  <!-- Admin Application (Rendered once unlocked) -->
+  <div id="admin-app" style="display:none">
+
+    <!-- Top Sticky Bar -->
+    <header class="admin-top-bar" role="banner">
+      <div class="admin-top-inner">
+        <div class="admin-brand">
+          <a href="index.html" class="nav-logo" style="text-decoration:none">
+            <div class="nav-logo-icon">📚</div>
+            <span class="nav-logo-text">كتبي <span>المشرف</span></span>
+          </a>
+          <span class="admin-badge-active">● لوحة التحكم نشطة</span>
+        </div>
+
+        <div class="admin-nav-actions">
+          <a href="index.html" target="_blank" class="btn-admin btn-admin-secondary" title="فتح موقع الطالب في علامة تبويب جديدة لمعاينته">
+            👁️ معاينة واجهة الطالب
+          </a>
+          <button class="btn-admin btn-admin-success" onclick="openExportModal()" title="تصدير ملفات data.json و data.js المحدثة لرفعها إلى GitHub">
+            📥 تصدير التحديثات لـ GitHub
+          </button>
+          <button class="btn-admin btn-admin-secondary" onclick="toggleTheme()" id="admin-theme-btn" title="تبديل الوضع الليلي / النهاري">
+            🌙
+          </button>
+          <button class="btn-admin btn-admin-danger" onclick="adminLogout()" title="قفل لوحة المشرف">
+            🔒 قفل اللوحة
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container" style="padding-top: 1.5rem; padding-bottom: 4rem;">
+
+      <!-- Stats Grid -->
+      <section class="admin-stats-grid" id="admin-stats-grid" aria-label="إحصائيات المنصة">
+        <!-- Rendered by JS -->
+      </section>
+
+      <!-- Grade Selector Bar -->
+      <section class="admin-toolbar animate-in" style="margin-bottom: 1.5rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+          <div>
+            <h2 style="font-size:1.4rem; font-weight:800; color:var(--text-primary);">إدارة كتب المراحل الدراسية</h2>
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-top:0.2rem;">اختر المرحلة لتعديل كتبها أو إضافة كتاب جديد أو إدارة روابط وملفات الـ PDF</p>
+          </div>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+            <button class="btn-admin btn-admin-primary" onclick="openAddBookModal()">
+              ➕ إضافة كتاب جديد للمرحلة
+            </button>
+            <button class="btn-admin btn-admin-secondary" onclick="confirmResetOverrides()" title="إعادة تعيين كافة التعديلات للوضع الأصلي">
+              🔄 إعادة ضبط المصنع
+            </button>
+          </div>
+        </div>
+
+        <!-- Grade Tabs -->
+        <div class="admin-tabs-wrap" id="admin-grade-tabs" role="tablist">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Search Box -->
+        <div class="books-search-box" style="max-width:100%; margin-top:0.5rem;">
+          <span>🔍</span>
+          <input type="search" 
+                 id="admin-search-input" 
+                 placeholder="ابحث في كتب هذه المرحلة..." 
+                 oninput="handleAdminSearch(this.value)"
+                 aria-label="بحث في الكتب">
+        </div>
+      </section>
+
+      <!-- Books Grid / Table -->
+      <section id="admin-books-container">
+        <!-- Rendered by JS -->
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Modals Container -->
+  <div id="admin-modal-container"></div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
