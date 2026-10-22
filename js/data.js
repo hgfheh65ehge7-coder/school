@@ -21,8 +21,8 @@ window.KUTUBI_DATA = {
             {
               "part": 1,
               "title": "اللغة العربية — الجزء الأول",
-              "openUrl": "https://bk2.shr4.com/books/bb1/2023-2024/%d9%83%d8%aa%d8%a7%d8%a8%20%d8%a7%d9%84%d8%a7%d9%86%d9%83%d9%84%d9%8a%d8%b2%d9%8a%20%d8%a7%d9%84%d8%b7%d8%a7%d9%84%d8%a8%20%d8%a7%d9%84%d8%a7%d9%88%d9%84%20%d8%a7%d9%84%d9%85%d8%aa%d9%88%d8%b3%d8%b7.pdf",
-              "downloadUrl": "https://bk2.shr4.com/books/bb1/2023-2024/%d9%83%d8%aa%d8%a7%d8%a8%20%d8%a7%d9%84%d8%a7%d9%86%d9%83%d9%84%d9%8a%d8%b2%d9%8a%20%d8%a7%d9%84%d8%b7%d8%a7%d9%84%d8%a8%20%d8%a7%d9%84%d8%a7%d9%88%d9%84%20%d8%a7%d9%84%d9%85%d8%aa%d9%88%d8%b3%d8%b7.pdf",
+              "openUrl": "https://bk2.shr4.com/books/bb1/2025-2026/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%20%D8%A7%D9%88%D9%84%20%D9%85%D8%AA%D9%88%D8%B3%D8%B7%20%D8%A7%D9%84%D8%AC%D8%B2%D8%A1%20%D8%A7%D9%84%D8%A7%D9%88%D9%84.pdf",
+              "downloadUrl": "https://bk2.shr4.com/books/bb1/2025-2026/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%20%D8%A7%D9%88%D9%84%20%D9%85%D8%AA%D9%88%D8%B3%D8%B7%20%D8%A7%D9%84%D8%AC%D8%B2%D8%A1%20%D8%A7%D9%84%D8%A7%D9%88%D9%84.pdf",
               "suggestedFileName": "g7-arabic-p1.pdf",
               "fileName": "اللغة العربية — الجزء الأول - الأول المتوسط.pdf",
               "format": "PDF",
